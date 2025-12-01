@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  
+<!-- Mirrored from bootstrapget.com/demos/cube-admin-template/settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 Sep 2025 22:02:17 GMT -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Templates & Dashboards - Cube Admin Template</title>
+
+    <!-- Meta -->
+    <meta name="description" content="Marketplace for Bootstrap Admin Dashboards" />
+    <meta name="author" content="Bootstrap Gallery" />
+    <link rel="canonical" href="https://www.bootstrapget.com/">
+    <meta property="og:url" content="https://www.bootstrapget.com/">
+    <meta property="og:title" content="Admin Templates - Dashboard Templates | Bootstrap Gallery">
+    <meta property="og:description" content="Marketplace for Bootstrap Admin Dashboards">
+    <meta property="og:type" content="Website">
+    <meta property="og:site_name" content="Bootstrap Gallery">
+    <link rel="shortcut icon" href="assets/images/favicon.svg" />
+
+    <!-- *************
+			************ CSS Files *************
+		************* -->
+    <link rel="stylesheet" href="assets/fonts/bootstrap/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="assets/css/main.min.css" />
+
+    <!-- *************
+			************ Vendor Css Files *************
+		************ -->
+
+    <!-- Scrollbar CSS -->
+    <link rel="stylesheet" href="assets/vendor/overlay-scroll/OverlayScrollbars.min.css" />
+  </head>
+
+  <body>
+
+    <!-- Page wrapper starts -->
+    <div class="page-wrapper">
+
+      <!-- Main container starts -->
+      <div class="main-container">
+
+        <!-- Sidebar wrapper starts -->
+        <nav id="sidebar" class="sidebar-wrapper">
+
+          <!-- App brand starts -->
+          <div class="app-brand p-3 my-2">
+            <a href="index.html">
+            <img src="assets/images/logo-sm.svg" class="logo" alt="Admin Dashboards" />
+          </a>
+          </div>
+          <!-- App brand ends -->
+
+          <!-- Sidebar menu starts -->
+           <nav id="sidebar" class="sidebar-wrapper">
+
+        <!-- App brand starts -->
+        <div class="app-brand p-3 my-2">
+          <a href="index.html">
+            <img src="assets/images/logo-sm.svg" class="logo" alt="Admin Dashboards" />
+          </a>
+        </div>
+        <!-- App brand ends -->
+
+        <!-- Sidebar menu starts -->
+        <nav id="sidebar" class="sidebar-wrapper">
+
+          <!-- App brand starts -->
+          <div class="app-brand p-3 my-2">
+            <a href="index.html">
+              <img src="assets/images/logo-sm.svg" class="logo" alt="Admin Dashboards" />
+            </a>
+          </div>
+          <!-- App brand ends -->
+
+          <!-- Sidebar menu starts -->
+          <div class="sidebarMenuScroll">
+            <ul class="sidebar-menu">
+              <li class="">
+                <a href="index.html">
+                  <i class="bi bi-bar-chart-line"></i>
+                  <span class="menu-text">Tableau de bord</span>
+                </a>
+              </li>
+              <li>
+                <a href="orders.html">
+                  <i class="bi bi-shop-window"></i>
+                  <span class="menu-text">Ventes</span>
+                </a>
+              </li>
+              <li >
+                <a href="expenses.html">
+                  <i class="bi bi-box"></i>
+                  <span class="menu-text">Stocks</span>
+                </a>
+              </li>
+             
+              <li class="active current-page">
+                <a href="settings.html">
+                  <i class="bi bi-gear"></i>
+                  <span class="menu-text">Paramètre</span>
+                </a>
+              </li>
+
+             
+
+            </ul>
+          </div>
+          <!-- Sidebar menu ends -->
+
+        </nav>
+        <!-- Sidebar menu ends -->
+
+      </nav>
+          <!-- Sidebar menu ends -->
+
+        </nav>
+        <!-- Sidebar wrapper ends -->
+
+        <!-- App container starts -->
+        <div class="app-container">
+
+          <!-- App header starts -->
+          <div class="app-header d-flex align-items-center">
+
+            <!-- Toggle buttons starts -->
+            <div class="d-flex">
+              <button type="button" class="toggle-sidebar">
+                <i class="bi bi-list lh-1"></i>
+              </button>
+              <button type="button" class="pin-sidebar">
+                <i class="bi bi-list lh-1"></i>
+              </button>
+            </div>
+            <!-- Toggle buttons ends -->
+
+            <!-- App brand sm starts -->
+            <div class="app-brand-sm d-lg-none d-flex">
+
+              <!-- Logo sm starts -->
+              <a href="index.html">
+                <img src="assets/images/logo-sm.svg" class="logo" alt="Bootstrap Gallery">
+              </a>
+              <!-- Logo sm end -->
+
+            </div>
+            <!-- App brand sm ends -->
+
+            <!-- Page title starts -->
+            <h5 class="m-0 ms-2 fw-semibold">Paramètre</h5>
+            <!-- Page title ends -->
+
+            <!-- App header actions starts -->
+          <div class="header-actions">
+
+
+
+            <!-- Header action bar starts -->
+            <div class="header-actions-container rounded-4 d-flex align-items-center">
+
+              <!-- Header actions start -->
+              <div class="me-2 text-truncate d-lg-block d-none">
+                <span>Montant du magasin :</span>
+                <span id="storeAmount" class="fw-bold">●●●●●</span>
+                <button id="toggleAmount" class="btn btn-sm btn-outline-secondary">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </div>
+              <script>
+                const toggleBtn = document.getElementById('toggleAmount');
+                const amountSpan = document.getElementById('storeAmount');
+                const actualAmount = "1 238 900 FCFA"; // Remplace par ton montant réel
+                let visible = false;
+
+                toggleBtn.addEventListener('click', () => {
+                  visible = !visible;
+                  amountSpan.textContent = visible ? actualAmount : '●●●●●';
+                  toggleBtn.innerHTML = visible ? '<i class="bi bi-eye-slash"></i>' : '<i class="bi bi-eye"></i>';
+                });
+              </script>
+
+
+              <!-- Header actions end -->
+
+              <!-- User settings start -->
+              <div class="dropdown">
+                <a id="userSettings" class="dropdown-toggle user-settings" href="#!" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="me-2 text-truncate d-lg-block d-none">Kourekama</span>
+                  <div class="header-actions-avatar fw-bold bg-primary-subtle text-primary">
+                    SE
+                  </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end shadow-lg">
+                  <a class="dropdown-item d-flex align-items-center" href="settings.html"><i
+                      class="bi bi-person fs-5 me-2"></i>Mon profil</a>
+
+                  <div class="mx-3 my-2 d-grid">
+                    <a href="login.html" class="btn btn-danger">Déconnexion</a>
+                  </div>
+
+                </div>
+              </div>
+              <!-- User settings end -->
+
+            </div>
+            <!-- Header action bar ends -->
+
+          </div>
+            <!-- App header actions ends -->
+
+          </div>
+          <!-- App header ends -->
+
+          <!-- App body starts -->
+          <div class="app-body">
+
+            <!-- Row starts -->
+            <div class="row gx-4">
+              <div class="col-xxl-12">
+                <div class="card">
+                  <div class="card-body">
+
+                    <!-- Custom tabs start -->
+                    <div class="custom-tabs-container">
+
+                      <!-- Nav tabs start -->
+                      <ul class="nav nav-tabs" id="customTab2" role="tablist">
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link active" id="tab-oneA" data-bs-toggle="tab" href="#oneA" role="tab"
+                            aria-controls="oneA" aria-selected="true"><i class="bi bi-person me-2"></i> Informations personnelles
+                            </a>
+                        </li>
+
+                        
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link" id="tab-fourA" data-bs-toggle="tab" href="#fourA" role="tab"
+                            aria-controls="fourA" aria-selected="false"><i class="bi bi-eye-slash me-2"></i>Modification du mot de passe
+                            </a>
+                        </li>
+                      </ul>
+                      <!-- Nav tabs end -->
+
+                      <!-- Tab content start -->
+                      <div class="tab-content h-300">
+                        <div class="tab-pane fade show active" id="oneA" role="tabpanel">
+
+                          <!-- Row starts -->
+                          <div class="row gx-4">
+                            <div class="col-sm-12 col-12">
+                              <div class="card border mb-3">
+                                <div class="card-body">
+
+                                  <!-- Row starts -->
+                                  <div class="row gx-4">
+                                    <div class="col-sm-3 col-12">
+
+                                      <!-- Form field start -->
+                                      <div class="mb-3">
+                                        <label for="fullName" class="form-label">Nom Complet</label>
+                                        <div class="input-group">
+                                          <span class="input-group-text">
+                                            <i class="bi bi-person"></i>
+                                          </span>
+                                          <input type="text" class="form-control" id="fullName" placeholder="Votre nom"
+                                            >
+                                        </div>
+                                      </div>
+                                      <!-- Form field end -->
+
+                                    </div>
+                                    <div class="col-sm-3 col-12">
+
+                                      <!-- Form field start -->
+                                      <div class="mb-3">
+                                        <label for="yourEmail" class="form-label">Email</label>
+                                        <div class="input-group">
+                                          <span class="input-group-text">
+                                            <i class="bi bi-envelope"></i>
+                                          </span>
+                                          <input type="email" class="form-control" id="yourEmail" placeholder="Votre email"
+                                           >
+                                        </div>
+                                      </div>
+                                      <!-- Form field end -->
+
+                                    </div>
+                                    <div class="col-sm-3 col-12">
+
+                                      <!-- Form field start -->
+                                      <div class="mb-3">
+                                        <label for="contactNumber" class="form-label">Contact</label>
+                                        <div class="input-group">
+                                          <span class="input-group-text">
+                                            <i class="bi bi-phone"></i>
+                                          </span>
+                                          <input type="text" class="form-control" id="contactNumber"
+                                            placeholder="Contact">
+                                        </div>
+
+                                      </div>
+                                      <!-- Form field end -->
+
+                                    </div>
+                                    <div class="col-sm-3 col-12">
+
+                                      <!-- Form field start -->
+                                      
+                                      <!-- Form field end -->
+
+                                    </div>
+                                    <div class="col-12">
+
+                                      <!-- Form field start -->
+                                      
+                                      <!-- Form field end -->
+
+                                    </div>
+
+                                  </div>
+                                  <!-- Row ends -->
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Row ends -->
+
+                        </div>
+                        <div class="tab-pane fade" id="twoA" role="tabpanel">
+
+                          <!-- Row starts -->
+                          <div class="row gx-5 align-items-center">
+                            <div class="col-sm-4 col-12">
+                              <div class="p-3">
+                                <img src="assets/images/notifications.svg" alt="Notifications" class="img-fluid">
+                              </div>
+                            </div>
+                            <div class="col-sm-4 col-12">
+
+                              <!-- List group start -->
+                              <ul class="list-group mb-4">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                  Desktop Notifications
+                                  <div class="form-check form-switch m-0">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="switchOne"
+                                      checked />
+                                  </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                  Email Notifications
+                                  <div class="form-check form-switch m-0">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="switchTwo"
+                                      checked />
+                                  </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                  Chat Notifications
+                                  <div class="form-check form-switch m-0">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="switchThree"
+                                      checked />
+                                  </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                  New Message
+                                  <div class="form-check form-switch m-0">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="switchFour" />
+                                  </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                  New Follower
+                                  <div class="form-check form-switch m-0">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="switchFive" />
+                                  </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                  New Review
+                                  <div class="form-check form-switch m-0">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="switchSix" />
+                                  </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                  New Order
+                                  <div class="form-check form-switch m-0">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="switchSeven" />
+                                  </div>
+                                </li>
+                              </ul>
+                              <!-- List group end -->
+
+                            </div>
+
+                          </div>
+                          <!-- Row ends -->
+
+                        </div>
+                        <div class="tab-pane fade" id="threeA" role="tabpanel">
+
+                         
+
+                        </div>
+                        <div class="tab-pane fade" id="fourA" role="tabpanel">
+
+                          <!-- Row starts -->
+                          <div class="row align-items-end">
+                          
+                            <div class="col-sm-4 col-12">
+                              <div class="card border mb-3">
+                                <div class="card-body">
+
+                                  <div class="mb-3">
+                                    <label class="form-label" for="currentPwd">Mot de passe actuelle <span
+                                        class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                      <input type="password" id="currentPwd" placeholder="Entrez votre mot de passe actuelle"
+                                        class="form-control">
+                                      <button class="btn btn-outline-secondary" type="button">
+                                        <i class="bi bi-eye text-black"></i>
+                                      </button>
+                                    </div>
+                                  </div>
+
+                                  <div class="mb-3">
+                                    <label class="form-label" for="newPwd">Nouveau mot de passe<span
+                                        class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                      <input type="password" id="newPwd" class="form-control"
+                                        placeholder="Entrez votre nouveau mot de passe.">
+                                      <button class="btn btn-outline-secondary" type="button">
+                                        <i class="bi bi-eye text-black"></i>
+                                      </button>
+                                    </div>
+                                  </div>
+
+                                  <div class="mb-3">
+                                    <label class="form-label" for="confNewPwd">Confirmer votre nouveau de passe <span
+                                        class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                      <input type="password" id="confNewPwd" placeholder="Confirmer votre nouveau mot de passe"
+                                        class="form-control">
+                                      <button class="btn btn-outline-secondary" type="button">
+                                        <i class="bi bi-eye text-black"></i>
+                                      </button>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Row ends -->
+
+                        </div>
+                      </div>
+                      <!-- Tab content end -->
+
+                    </div>
+                    <!-- Custom tabs end -->
+
+                    <!-- Buttons start -->
+                    <div class="d-flex gap-2 justify-content-end">
+                      
+                      
+                      <button type="button" class="btn btn-primary">
+                        Mettre à jour
+                      </button>
+                    </div>
+                    <!-- Buttons end -->
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Row ends -->
+
+          </div>
+          <!-- App body ends -->
+
+          <!-- App footer starts -->
+          <div class="app-footer">
+            <span class="small">© Bootstrap Gallery 2025</span>
+          </div>
+          <!-- App footer ends -->
+
+        </div>
+        <!-- App container ends -->
+
+      </div>
+      <!-- Main container ends -->
+
+    </div>
+    <!-- Page wrapper ends -->
+
+    <!-- *************
+			************ JavaScript Files *************
+		************* -->
+    <!-- Required jQuery first, then Bootstrap Bundle JS -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/moment.min.js"></script>
+
+    <!-- *************
+			************ Vendor Js Files *************
+		************* -->
+
+    <!-- Overlay Scroll JS -->
+    <script src="assets/vendor/overlay-scroll/jquery.overlayScrollbars.min.js"></script>
+    <script src="assets/vendor/overlay-scroll/custom-scrollbar.js"></script>
+
+    <!-- Custom JS files -->
+    <script src="assets/js/custom.js"></script>
+  </body>
+
+
+<!-- Mirrored from bootstrapget.com/demos/cube-admin-template/settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 Sep 2025 22:02:20 GMT -->
+</html>

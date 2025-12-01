@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from bootstrapget.com/demos/cube-admin-template/create-invoice.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 Sep 2025 22:02:02 GMT -->
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Templates & Dashboards - Cube Admin Template</title>
+
+    <!-- Meta -->
+    <meta name="description" content="Marketplace for Bootstrap Admin Dashboards" />
+    <meta name="author" content="Bootstrap Gallery" />
+    <link rel="canonical" href="https://www.bootstrapget.com/">
+    <meta property="og:url" content="https://www.bootstrapget.com/">
+    <meta property="og:title" content="Admin Templates - Dashboard Templates | Bootstrap Gallery">
+    <meta property="og:description" content="Marketplace for Bootstrap Admin Dashboards">
+    <meta property="og:type" content="Website">
+    <meta property="og:site_name" content="Bootstrap Gallery">
+    <link rel="shortcut icon" href="assets/images/favicon.svg" />
+
+    <!-- *************
+			************ CSS Files *************
+		************* -->
+    <link rel="stylesheet" href="assets/fonts/bootstrap/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="assets/css/main.min.css" />
+
+    <!-- *************
+			************ Vendor Css Files *************
+		************ -->
+
+    <!-- Scrollbar CSS -->
+    <link rel="stylesheet" href="assets/vendor/overlay-scroll/OverlayScrollbars.min.css" />
+</head>
+
+<body>
+
+    <!-- Page wrapper starts -->
+    <div class="page-wrapper">
+
+        <!-- Main container starts -->
+        <div class="main-container">
+
+            <!-- Sidebar wrapper starts -->
+            <nav id="sidebar" class="sidebar-wrapper">
+
+                <!-- App brand starts -->
+                <div class="app-brand p-3 my-2">
+                    <a href="index.html">
+                        <img src="assets/images/logo-sm.svg" class="logo" alt="Admin Dashboards" />
+                    </a>
+                </div>
+                <!-- App brand ends -->
+
+                <!-- Sidebar menu starts -->
+                <div class="sidebarMenuScroll">
+                    <ul class="sidebar-menu">
+                        <li class="">
+                            <a href="index.html">
+                                <i class="bi bi-bar-chart-line"></i>
+                                <span class="menu-text">Tableau de bord</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="orders.html">
+                                <i class="bi bi-shop-window"></i>
+                                <span class="menu-text">Ventes</span>
+                            </a>
+                        </li>
+                        <li class="active current-page">
+                            <a href="expenses.html">
+                                <i class="bi bi-box"></i>
+                                <span class="menu-text">Stocks</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="settings.html">
+                                <i class="bi bi-gear"></i>
+                                <span class="menu-text">Paramètre</span>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+                <!-- Sidebar menu ends -->
+
+            </nav>
+            <!-- Sidebar wrapper ends -->
+
+            <!-- App container starts -->
+            <div class="app-container">
+
+                <!-- App header starts -->
+                <div class="app-header d-flex align-items-center">
+
+                    <!-- Toggle buttons starts -->
+                    <div class="d-flex">
+                        <button type="button" class="toggle-sidebar">
+                            <i class="bi bi-list lh-1"></i>
+                        </button>
+                        <button type="button" class="pin-sidebar">
+                            <i class="bi bi-list lh-1"></i>
+                        </button>
+                    </div>
+                    <!-- Toggle buttons ends -->
+
+                    <!-- App brand sm starts -->
+                    <div class="app-brand-sm d-lg-none d-flex">
+
+                        <!-- Logo sm starts -->
+                        <a href="index.html">
+                            <img src="assets/images/logo-sm.svg" class="logo" alt="Bootstrap Gallery">
+                        </a>
+                        <!-- Logo sm end -->
+
+                    </div>
+                    <!-- App brand sm ends -->
+
+                    <!-- Page title starts -->
+                    <h5 class="m-0 ms-2 fw-semibold">Ajouter d'un nouveau stock</h5>
+                    <!-- Page title ends -->
+
+                    <!-- App header actions starts -->
+                    <div class="header-actions">
+
+
+
+                        <!-- Header action bar starts -->
+                        <div class="header-actions-container rounded-4 d-flex align-items-center">
+
+                            <!-- Header actions start -->
+                            <div class="me-2 text-truncate d-lg-block d-none">
+                                <span>Montant du magasin :</span>
+                                <span id="storeAmount" class="fw-bold">●●●●●</span>
+                                <button id="toggleAmount" class="btn btn-sm btn-outline-secondary">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                            <script>
+                                const toggleBtn = document.getElementById('toggleAmount');
+                                const amountSpan = document.getElementById('storeAmount');
+                                const actualAmount = "1 238 900 FCFA"; // Remplace par ton montant réel
+                                let visible = false;
+
+                                toggleBtn.addEventListener('click', () => {
+                                    visible = !visible;
+                                    amountSpan.textContent = visible ? actualAmount : '●●●●●';
+                                    toggleBtn.innerHTML = visible ? '<i class="bi bi-eye-slash"></i>' : '<i class="bi bi-eye"></i>';
+                                });
+                            </script>
+
+
+                            <!-- Header actions end -->
+
+                            <!-- User settings start -->
+                            <div class="dropdown">
+                                <a id="userSettings" class="dropdown-toggle user-settings" href="#!" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="me-2 text-truncate d-lg-block d-none">Kourekama</span>
+                                    <div class="header-actions-avatar fw-bold bg-primary-subtle text-primary">
+                                        SE
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end shadow-lg">
+                                    <a class="dropdown-item d-flex align-items-center" href="settings.html"><i
+                                            class="bi bi-person fs-5 me-2"></i>Mon profil</a>
+
+                                    <div class="mx-3 my-2 d-grid">
+                                        <a href="login.html" class="btn btn-danger">Déconnexion</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- User settings end -->
+
+                        </div>
+                        <!-- Header action bar ends -->
+
+                    </div>
+                    <!-- App header actions ends -->
+
+                </div>
+                <!-- App header ends -->
+
+                <!-- App body starts -->
+                <div class="app-body">
+
+                    <!-- Row starts -->
+                    <div class="row gx-4 mt-4">
+                        <div class="col-12">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title"><i class="bi bi-box-seam me-2"></i>Créer un nouveau stock
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <form id="stock-form">
+
+                                        <!-- Stock Items -->
+                                        <div class="card border mb-4">
+                                            <div class="card-header bg-primary-subtle">
+                                              
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table" id="stock-items">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>Image</th>
+                                                                <th>Nom du produit</th>
+                                                                <th>Quantité entrée</th>
+                                                                <th>Prix unitaire (FCFA)</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td><input type="file"
+                                                                        class="form-control form-control-sm"
+                                                                        accept="image/*"></td>
+                                                                <td><input type="text"
+                                                                        class="form-control form-control-sm"
+                                                                        placeholder="Nom du produit"></td>
+                                                                <td><input type="number"
+                                                                        class="form-control form-control-sm qty"
+                                                                        value="1" min="1"></td>
+                                                                <td><input type="number"
+                                                                        class="form-control form-control-sm unit-price"
+                                                                        value="0" min="0"></td>
+                                                                <td><button type="button"
+                                                                        class="btn btn-sm btn-outline-danger remove-row"><i
+                                                                            class="bi bi-trash"></i></button></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <button type="button" class="btn btn-outline-primary btn-sm mt-2"
+                                                    id="add-item">
+                                                    <i class="bi bi-plus-circle me-1"></i>Ajouter un autre produit
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Submit -->
+                                        <div class="d-flex justify-content-end gap-2">
+                                            <button type="submit" class="btn btn-primary"><i
+                                                    class="bi bi-save me-1"></i>Enregistrer le stock</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        // Ajouter un nouvel item
+                        const addBtn = document.getElementById('add-item');
+                        const tbody = document.querySelector('#stock-items tbody');
+
+                        addBtn.addEventListener('click', () => {
+                            const rowCount = tbody.rows.length + 1;
+                            const tr = document.createElement('tr');
+                            tr.innerHTML = `
+      <td>${rowCount}</td>
+      <td><input type="file" class="form-control form-control-sm" accept="image/*"></td>
+      <td><input type="text" class="form-control form-control-sm" placeholder="Nom du produit"></td>
+      <td><input type="number" class="form-control form-control-sm qty" value="1" min="1"></td>
+      <td><input type="number" class="form-control form-control-sm unit-price" value="0" min="0"></td>
+      <td><button type="button" class="btn btn-sm btn-outline-danger remove-row"><i class="bi bi-trash"></i></button></td>
+    `;
+                            tbody.appendChild(tr);
+                            attachEvents(tr);
+                        });
+
+                        // Gestion suppression et réindexation des lignes
+                        function attachEvents(tr) {
+                            const removeBtn = tr.querySelector('.remove-row');
+                            removeBtn.addEventListener('click', () => {
+                                tr.remove();
+                                Array.from(tbody.rows).forEach((row, idx) => row.cells[0].textContent = idx + 1);
+                            });
+                        }
+
+                        // Initial attach pour la ligne existante
+                        Array.from(tbody.rows).forEach(tr => attachEvents(tr));
+                    </script>
+
+
+                    <!-- Row ends -->
+
+                </div>
+                <!-- App body ends -->
+
+                <!-- App footer starts -->
+                <div class="app-footer">
+                    <span class="big text-dark">Développer par Ndiaye Seydou +223 79 57 86 36 |
+                        ndiayeseydouyongui@gmail.com
+                    </span>
+                </div>
+                <!-- App footer ends -->
+
+            </div>
+            <!-- App container ends -->
+
+        </div>
+        <!-- Main container ends -->
+
+    </div>
+    <!-- Page wrapper ends -->
+
+    <!-- *************
+			************ JavaScript Files *************
+		************* -->
+    <!-- Required jQuery first, then Bootstrap Bundle JS -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- *************
+			************ Vendor Js Files *************
+		************* -->
+
+    <!-- Overlay Scroll JS -->
+    <script src="assets/vendor/overlay-scroll/jquery.overlayScrollbars.min.js"></script>
+    <script src="assets/vendor/overlay-scroll/custom-scrollbar.js"></script>
+
+    <!-- Custom JS files -->
+    <script src="assets/js/custom.js"></script>
+</body>
+
+
+<!-- Mirrored from bootstrapget.com/demos/cube-admin-template/create-invoice.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 Sep 2025 22:02:02 GMT -->
+
+</html>
