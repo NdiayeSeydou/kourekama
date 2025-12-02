@@ -1,6 +1,6 @@
 @extends('layout')
 @section('title', 'Modifier une vente | Kourekama')
-@section('text','Modifier une vente')
+@section('text', 'Modifier une vente')
 @section('suite')
 
     <div class="row gx-4 mt-4">
@@ -75,7 +75,12 @@
                             </div>
                         </div>
 
-                        <button class="btn btn-primary">Mettre à jour la vente</button>
+                        <div class="card-footer d-flex justify-content-end gap-2">
+                            <button type="submit" class="btn btn-primary">Mettre à jour la vente</button>
+                            <button type="button" class="btn btn-secondary"
+                                onclick="window.history.back();">Annuler</button>
+                        </div>
+
                     </form>
 
 

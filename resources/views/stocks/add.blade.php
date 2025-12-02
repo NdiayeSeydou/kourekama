@@ -1,6 +1,6 @@
 @extends('layout_stock')
 @section('title', 'Créer un nouveau stock')
-@section('text','Ajouter un stock')
+@section('text', 'Ajouter un stock')
 @section('suite')
 
     <div class="app-body">
@@ -24,21 +24,21 @@
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table" id="stock-items">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Date</th>
-                                                            <th>Image</th>
-                                                            <th>Nom du produit</th>
-                                                            <th>Quantité entrée</th>
-                                                            <th>Prix unitaire (FCFA)</th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                    </thead>
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Date</th>
+                                                    <th>Image</th>
+                                                    <th>Nom du produit</th>
+                                                    <th>Quantité entrée</th>
+                                                    <th>Prix unitaire (FCFA)</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
                                             <tbody>
                                                 <tr>
                                                     <td>1</td>
-                                                    
+
                                                     <td>
                                                         <input type="date" name="date[]"
                                                             class="form-control form-control-sm"
@@ -92,9 +92,14 @@
                             </div>
 
                             <!-- Submit -->
-                            <div class="d-flex justify-content-end gap-2">
-                                <button type="submit" class="btn btn-primary"><i class="bi bi-save me-1"></i>Enregistrer le
-                                    stock</button>
+                          
+                            <div class="card-footer d-flex justify-content-end gap-2">
+                                <button type="submit" class="btn btn-primary">
+                                   <i class="bi bi-save me-1"></i>Enregistrer le
+                                    stock
+                                </button>
+                                <button type="button" class="btn btn-secondary"
+                                    onclick="window.history.back();">Annuler</button>
                             </div>
 
                         </form>
@@ -138,14 +143,19 @@
 
                             <div class="mb-3">
                                 <label for="date_add" class="form-label">Date</label>
-                                <input type="date" id="date_add" name="date" class="form-control" value="{{ now()->format('Y-m-d') }}">
+                                <input type="date" id="date_add" name="date" class="form-control"
+                                    value="{{ now()->format('Y-m-d') }}">
                             </div>
 
-                            <div class="d-flex justify-content-end">
+
+                            <div class="card-footer d-flex justify-content-end gap-2">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="bi bi-plus-circle me-1"></i>Mettre à jour le stock
                                 </button>
+                                <button type="button" class="btn btn-secondary"
+                                    onclick="window.history.back();">Annuler</button>
                             </div>
+
                         </form>
                     </div>
 
@@ -265,7 +275,7 @@
                 <!-- App body ends -->
 
                 <!-- App footer starts -->
-               
+
                 <!-- App footer ends -->
 
             </div>

@@ -1,6 +1,6 @@
 @extends('layout_stock')
 @section('title', 'Modfifier un stock | Kourekama')
-@section('text','Modifier un stocks')
+@section('text', 'Modifier un stocks')
 @section('suite')
 
     <div class="app-body">
@@ -16,7 +16,8 @@
                     </div>
 
                     <div class="card-body">
-                        <form action="{{ route('admin.stocks.update.post', Crypt::encrypt($stock->id)) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.stocks.update.post', Crypt::encrypt($stock->id)) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -24,24 +25,28 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Nom du produit</label>
-                                        <input type="text" name="nom_produit" value="{{ $stock->nom_produit }}" class="form-control">
+                                        <input type="text" name="nom_produit" value="{{ $stock->nom_produit }}"
+                                            class="form-control">
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label">Quantité entrée</label>
-                                        <input type="number" name="quantite_entree" value="{{ $stock->quantite_entree }}" class="form-control" min="0">
+                                        <input type="number" name="quantite_entree" value="{{ $stock->quantite_entree }}"
+                                            class="form-control" min="0">
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label">Prix unitaire (FCFA)</label>
-                                        <input type="number" name="prix_unitaire" value="{{ $stock->prix_unitaire }}" class="form-control" min="0">
+                                        <input type="number" name="prix_unitaire" value="{{ $stock->prix_unitaire }}"
+                                            class="form-control" min="0">
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Date</label>
-                                        <input type="date" name="date" class="form-control" value="{{ old('date', optional($stock->date) ? date('Y-m-d', strtotime($stock->date)) : '') }}">
+                                        <input type="date" name="date" class="form-control"
+                                            value="{{ old('date', optional($stock->date) ? date('Y-m-d', strtotime($stock->date)) : '') }}">
                                     </div>
 
                                     <div class="mb-3">
@@ -53,16 +58,20 @@
                                         <div class="mb-3">
                                             <label class="form-label">Image actuelle</label>
                                             <div>
-                                                <img src="{{ asset('storage/' . $stock->image) }}" class="img-thumbnail" style="max-width:180px;">
+                                                <img src="{{ asset('storage/' . $stock->image) }}" class="img-thumbnail"
+                                                    style="max-width:180px;">
                                             </div>
                                         </div>
                                     @endif
                                 </div>
                             </div>
 
-                            <div class="d-flex justify-content-end mt-4">
-                                <button class="btn btn-primary">Mettre à jour</button>
+                            <div class="card-footer d-flex justify-content-end gap-2">
+                                <button type="submit" class="btn btn-primary">Mettre à jour le stock</button>
+                                <button type="button" class="btn btn-secondary"
+                                    onclick="window.history.back();">Annuler</button>
                             </div>
+
                         </form>
 
                     </div>

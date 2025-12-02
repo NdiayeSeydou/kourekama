@@ -1,6 +1,6 @@
 @extends('layout')
-@section('title','Enregistré une vente')
-@section('text','Ajouter une vente | Kourekama')
+@section('title', 'Enregistré une vente')
+@section('text', 'Ajouter une vente | Kourekama')
 @section('suite')
     <div class="app-body">
 
@@ -68,7 +68,9 @@
                                                             min="0">
                                                     </td>
                                                     <td>
-                                                        <input type="date" name="date[]" class="form-control form-control-sm" value="{{ now()->format('Y-m-d') }}">
+                                                        <input type="date" name="date[]"
+                                                            class="form-control form-control-sm"
+                                                            value="{{ now()->format('Y-m-d') }}">
                                                     </td>
                                                     <td>
                                                         <button type="button"
@@ -84,10 +86,13 @@
                                         <i class="bi bi-plus-circle me-1"></i>Ajouter une autre vente
                                     </button>
                                 </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Enregistrer toutes les
-                                        ventes</button>
+
+                                <div class="card-footer d-flex justify-content-end gap-2">
+                                    <button type="submit" class="btn btn-primary">Enregistrer toutes les ventes</button>
+                                    <button type="button" class="btn btn-secondary"
+                                        onclick="window.history.back();">Annuler</button>
                                 </div>
+
                             </div>
                         </form>
                     </div>
@@ -107,7 +112,7 @@
                     });
                 }
 
-                    // Ajout d'une ligne
+                // Ajout d'une ligne
                 document.getElementById('add-item').addEventListener('click', function() {
                     let firstRow = tbody.querySelector('tr');
                     let newRow = firstRow.cloneNode(true);
@@ -119,7 +124,7 @@
                     newRow.querySelector('.product-select').selectedIndex = 0;
                     const dateInput = newRow.querySelector('input[name="date[]"]');
                     if (dateInput) {
-                        dateInput.value = new Date().toISOString().slice(0,10);
+                        dateInput.value = new Date().toISOString().slice(0, 10);
                     }
 
                     tbody.appendChild(newRow);

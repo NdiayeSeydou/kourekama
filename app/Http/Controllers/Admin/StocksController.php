@@ -345,28 +345,27 @@ class StocksController extends Controller
     }
 
     // Modifier le PIN
-   public function updatePin(Request $request)
-{
-    $request->validate([
-        'current_password' => 'required|min:4|max:6',
-        'new_password' => 'required|min:4|max:6|confirmed'
-    ]);
-
-    $user = Auth::user();
-    $currentPin = trim($request->current_password);
-
-    // Vérifie le PIN actuel
-    if (!Hash::check($currentPin, $user->stock_pin)) {
-        return back()->withErrors([
-            'current_password' => 'Code PIN actuel incorrect.'
+    public function updatePin(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required|min:4|max:6',
+            'new_password' => 'required|min:4|max:6|confirmed'
         ]);
+
+        $user = Auth::user();
+        $currentPin = trim($request->current_password);
+
+        // Vérifie le PIN actuel
+        if (!Hash::check($currentPin, $user->stock_pin)) {
+            return back()->withErrors([
+                'current_password' => 'Code PIN actuel incorrect.'
+            ]);
+        }
+
+        // Met à jour le PIN
+        $user->stock_pin = Hash::make($request->new_password);
+        $user->save();
+
+        return back()->with('success', 'Code PIN mis à jour avec succès !');
     }
-
-    // Met à jour le PIN
-    $user->stock_pin = Hash::make($request->new_password);
-    $user->save();
-
-    return back()->with('success', 'Code PIN mis à jour avec succès !');
-}
-
 }
