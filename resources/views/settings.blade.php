@@ -30,6 +30,12 @@
                                             class="bi bi-eye-slash me-2"></i>Modification du mot de passe
                                     </a>
                                 </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="tab-fourB" data-bs-toggle="tab" href="#fourB" role="tab"
+                                        aria-controls="fourB" aria-selected="false"><i class="bi bi-eye-slash me-2"></i>Code
+                                        pin
+                                    </a>
+                                </li>
                             </ul>
                             <!-- Nav tabs end -->
 
@@ -41,84 +47,103 @@
                                     <form action="{{ route('admin.settings.update') }}" method="POST">
                                         @csrf
                                         @method('POST')
-                                    <div class="row gx-4">
-                                        <div class="col-sm-12 col-12">
-                                            <div class="card border mb-3">
-                                                <div class="card-body">
+                                        <div class="row gx-4">
+                                            <div class="col-sm-12 col-12">
+                                                <div class="card border mb-3">
+                                                    <div class="card-body">
 
-                                                    <!-- Row starts -->
-                                                    <div class="row gx-4">
-                                                        <div class="col-sm-3 col-12">
+                                                        <!-- Row starts -->
+                                                        <div class="row gx-4">
+                                                            <div class="col-sm-3 col-12">
 
-                                                            <!-- Form field start -->
-                                                            <div class="mb-3">
-                                                                <label for="fullName" class="form-label">Nom Complet</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-text">
-                                                                        <i class="bi bi-person"></i>
-                                                                    </span>
-                                                                    <input type="text" name="name" value="{{ old('name', auth()->user()->name) }}" class="form-control"
-                                                                        id="fullName" placeholder="Votre nom" required>
+                                                                <!-- Form field start -->
+                                                                <div class="mb-3">
+                                                                    <label for="fullName" class="form-label">Nom
+                                                                        Complet</label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-text">
+                                                                            <i class="bi bi-person"></i>
+                                                                        </span>
+                                                                        <input type="text" name="name"
+                                                                            value="{{ old('name', auth()->user()->name) }}"
+                                                                            class="form-control" id="fullName"
+                                                                            placeholder="Votre nom" required>
+                                                                    </div>
+                                                                    @error('name')
+                                                                        <div class="text-danger small">{{ $message }}</div>
+                                                                    @enderror
                                                                 </div>
-                                                                @error('name') <div class="text-danger small">{{ $message }}</div> @enderror
+                                                                <!-- Form field end -->
+
                                                             </div>
-                                                            <!-- Form field end -->
+                                                            <div class="col-sm-3 col-12">
 
-                                                        </div>
-                                                        <div class="col-sm-3 col-12">
-
-                                                            <!-- Form field start -->
-                                                            <div class="mb-3">
-                                                                <label for="yourEmail" class="form-label">Email</label>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-text">
-                                                                        <i class="bi bi-envelope"></i>
-                                                                    </span>
-                                                                    <input type="email" name="email" value="{{ old('email', auth()->user()->email) }}" class="form-control"
-                                                                        id="yourEmail" placeholder="Votre email" required>
+                                                                <!-- Form field start -->
+                                                                <div class="mb-3">
+                                                                    <label for="yourEmail" class="form-label">Email</label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-text">
+                                                                            <i class="bi bi-envelope"></i>
+                                                                        </span>
+                                                                        <input type="email" name="email"
+                                                                            value="{{ old('email', auth()->user()->email) }}"
+                                                                            class="form-control" id="yourEmail"
+                                                                            placeholder="Votre email" required>
+                                                                    </div>
+                                                                    @error('email')
+                                                                        <div class="text-danger small">{{ $message }}</div>
+                                                                    @enderror
                                                                 </div>
-                                                                @error('email') <div class="text-danger small">{{ $message }}</div> @enderror
+                                                                <!-- Form field end -->
+
                                                             </div>
-                                                            <!-- Form field end -->
+
+                                                            <div class="col-sm-3 col-12">
+                                                                @if (\Illuminate\Support\Facades\Schema::hasColumn('users', 'level'))
+                                                                    <div class="mb-3">
+                                                                        <label for="level"
+                                                                            class="form-label">Niveau</label>
+                                                                        <select name="level" id="level"
+                                                                            class="form-select">
+                                                                            <option value="">-- Choisir --</option>
+                                                                            <option value="user"
+                                                                                {{ old('level', auth()->user()->level ?? '') == 'user' ? 'selected' : '' }}>
+                                                                                Utilisateur</option>
+                                                                            <option value="admin"
+                                                                                {{ old('level', auth()->user()->level ?? '') == 'admin' ? 'selected' : '' }}>
+                                                                                Administrateur</option>
+                                                                        </select>
+                                                                        @error('level')
+                                                                            <div class="text-danger small">{{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                            <div class="col-12">
+
+                                                                <!-- Form field start -->
+                                                                @if (\Illuminate\Support\Facades\Schema::hasColumn('users', 'confirmed'))
+                                                                    <div class="form-check mb-3">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                            name="confirmed" value="1" id="confirmed"
+                                                                            {{ old('confirmed', auth()->user()->confirmed ?? false) ? 'checked' : '' }}>
+                                                                        <label class="form-check-label"
+                                                                            for="confirmed">Confirmé</label>
+                                                                    </div>
+                                                                @endif
+                                                                <!-- Form field end -->
+
+                                                            </div>
 
                                                         </div>
-                                                     
-                                                        <div class="col-sm-3 col-12">
-                                                            @if(
-                                                                \Illuminate\Support\Facades\Schema::hasColumn('users', 'level')
-                                                            )
-                                                            <div class="mb-3">
-                                                                <label for="level" class="form-label">Niveau</label>
-                                                                <select name="level" id="level" class="form-select">
-                                                                    <option value="">-- Choisir --</option>
-                                                                    <option value="user" {{ old('level', auth()->user()->level ?? '') == 'user' ? 'selected' : '' }}>Utilisateur</option>
-                                                                    <option value="admin" {{ old('level', auth()->user()->level ?? '') == 'admin' ? 'selected' : '' }}>Administrateur</option>
-                                                                </select>
-                                                                @error('level') <div class="text-danger small">{{ $message }}</div> @enderror
-                                                            </div>
-                                                            @endif
-                                                        </div>
-                                                        <div class="col-12">
-
-                                                            <!-- Form field start -->
-                                                            @if(\Illuminate\Support\Facades\Schema::hasColumn('users', 'confirmed'))
-                                                            <div class="form-check mb-3">
-                                                                <input class="form-check-input" type="checkbox" name="confirmed" value="1" id="confirmed" {{ old('confirmed', auth()->user()->confirmed ?? false) ? 'checked' : '' }}>
-                                                                <label class="form-check-label" for="confirmed">Confirmé</label>
-                                                            </div>
-                                                            @endif
-                                                            <!-- Form field end -->
-
-                                                        </div>
+                                                        <!-- Row ends -->
 
                                                     </div>
-                                                    <!-- Row ends -->
-
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- Row ends -->
+                                        <!-- Row ends -->
 
                                 </div>
                                 <div class="tab-pane fade" id="twoA" role="tabpanel">
@@ -215,25 +240,41 @@
                                                 <div class="card-body">
 
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="current_password">Mot de passe actuel</label>
+                                                        <label class="form-label" for="current_password">Mot de passe
+                                                            actuel</label>
                                                         <div class="input-group">
-                                                            <input type="password" name="current_password" id="current_password" placeholder="Entrez votre mot de passe actuel" class="form-control">
+                                                            <input type="password" name="current_password"
+                                                                id="current_password"
+                                                                placeholder="Entrez votre mot de passe actuel"
+                                                                class="form-control">
                                                         </div>
-                                                        @error('current_password') <div class="text-danger small">{{ $message }}</div> @enderror
+                                                        @error('current_password')
+                                                            <div class="text-danger small">{{ $message }}</div>
+                                                        @enderror
                                                     </div>
 
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="new_password">Nouveau mot de passe</label>
+                                                        <label class="form-label" for="new_password">Nouveau mot de
+                                                            passe</label>
                                                         <div class="input-group">
-                                                            <input type="password" name="new_password" id="new_password" class="form-control" placeholder="Entrez votre nouveau mot de passe.">
+                                                            <input type="password" name="new_password" id="new_password"
+                                                                class="form-control"
+                                                                placeholder="Entrez votre nouveau mot de passe.">
                                                         </div>
-                                                        @error('new_password') <div class="text-danger small">{{ $message }}</div> @enderror
+                                                        @error('new_password')
+                                                            <div class="text-danger small">{{ $message }}</div>
+                                                        @enderror
                                                     </div>
 
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="new_password_confirmation">Confirmer le nouveau mot de passe</label>
+                                                        <label class="form-label"
+                                                            for="new_password_confirmation">Confirmer le nouveau mot de
+                                                            passe</label>
                                                         <div class="input-group">
-                                                            <input type="password" name="new_password_confirmation" id="new_password_confirmation" placeholder="Confirmer votre nouveau mot de passe" class="form-control">
+                                                            <input type="password" name="new_password_confirmation"
+                                                                id="new_password_confirmation"
+                                                                placeholder="Confirmer votre nouveau mot de passe"
+                                                                class="form-control">
                                                         </div>
                                                     </div>
 
@@ -241,24 +282,93 @@
                                             </div>
                                         </div>
                                     </div>
+
+
+
+
                                     <!-- Row ends -->
 
                                 </div>
+
+                                <!-- Buttons for main settings form (placed before PIN tab to avoid nested forms) -->
+                                <div class="d-flex gap-2 justify-content-end">
+                                    <button type="submit" class="btn btn-primary">
+                                        Mettre à jour
+                                    </button>
+                                </div>
+
+                                </form>
+
+                                <div class="tab-pane fade" id="fourB" role="tabpanel">
+                                    <div class="row align-items-end">
+                                        <div class="col-sm-4 col-12">
+                                            <div class="card border mb-3">
+                                                <div class="card-body">
+                                                    <form action="{{ route('update.pin') }}" method="POST">
+                                                        @csrf
+
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="current_password">Code PIN
+                                                                actuel</label>
+                                                            <div class="input-group">
+                                                                <input type="password" name="current_password"
+                                                                    id="current_password"
+                                                                    placeholder="Entrez votre code PIN actuel"
+                                                                    class="form-control">
+                                                            </div>
+                                                            @error('current_password')
+                                                                <div class="text-danger small">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="new_password">Nouveau code
+                                                                PIN</label>
+                                                            <div class="input-group">
+                                                                <input type="password" name="new_password"
+                                                                    id="new_password" class="form-control"
+                                                                    placeholder="Entrez votre nouveau code PIN">
+                                                            </div>
+                                                            @error('new_password')
+                                                                <div class="text-danger small">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+
+                                                        <div class="mb-3">
+                                                            <label class="form-label"
+                                                                for="new_password_confirmation">Confirmer le code
+                                                                PIN</label>
+                                                            <div class="input-group">
+                                                                <input type="password" name="new_password_confirmation"
+                                                                    id="new_password_confirmation"
+                                                                    placeholder="Confirmer votre nouveau code PIN"
+                                                                    class="form-control">
+                                                            </div>
+                                                        </div>
+
+                                                        <button type="submit" class="btn btn-primary">Modifier le code
+                                                            PIN</button>
+                                                    </form>
+
+                                                    @if (session('success'))
+                                                        <div class="text-success mt-2">{{ session('success') }}</div>
+                                                    @endif
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
                             </div>
                             <!-- Tab content end -->
 
                         </div>
                         <!-- Custom tabs end -->
 
-                        <!-- Buttons start -->
-                        <div class="d-flex gap-2 justify-content-end">
-                            <button type="submit" class="btn btn-primary">
-                                Mettre à jour
-                            </button>
-                        </div>
-                        <!-- Buttons end -->
-
-                        </form>
+                        <!-- Buttons removed from here (moved before PIN tab to avoid nested forms) -->
 
                     </div>
                 </div>

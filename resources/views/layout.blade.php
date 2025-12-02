@@ -141,22 +141,70 @@
                                 </button>
                             </div>
                            <script>
-    const toggleBtn = document.getElementById('toggleAmount');
-    const amountSpan = document.getElementById('storeAmount');
+const toggleBtn = document.getElementById('toggleAmount');
+const amountSpan = document.getElementById('storeAmount');
+const actualAmount = "{{ number_format(app(\App\Http\Controllers\Admin\StocksController::class)->totalStockValue(), 0, ',', ' ') }} FCFA";
 
-    // Récupération du montant réel Laravel
-    const actualAmount = "{{ number_format(app(\App\Http\Controllers\Admin\StocksController::class)->totalStockValue(), 0, ',', ' ') }} FCFA";
+let visible = false;
 
-    let visible = false;
+toggleBtn.addEventListener('click', () => {
+    if (!visible) {
+        // Ouvre la modale pour entrer le PIN
+        const modal = new bootstrap.Modal(document.getElementById('pinModal'));
+        modal.show();
 
-    toggleBtn.addEventListener('click', () => {
-        visible = !visible;
-        amountSpan.textContent = visible ? actualAmount : '●●●●●';
-        toggleBtn.innerHTML = visible 
-            ? '<i class="bi bi-eye-slash"></i>' 
-            : '<i class="bi bi-eye"></i>';
-    });
+        document.getElementById('validatePin').onclick = function () {
+            const pin = document.getElementById('pinInput').value;
+
+            fetch("{{ route('check.pin') }}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                },
+                body: JSON.stringify({ pin })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (!data.success) {
+                    document.getElementById('pinError').textContent = data.message;
+                } else {
+                    visible = true;
+                    amountSpan.textContent = actualAmount;
+                    toggleBtn.innerHTML = '<i class="bi bi-eye-slash"></i>';
+                    modal.hide();
+                }
+            });
+        };
+    } 
+    else {
+        visible = false;
+        amountSpan.textContent = '●●●●●';
+        toggleBtn.innerHTML = '<i class="bi bi-eye"></i>';
+    }
+});
 </script>
+
+
+
+<!-- Modal pour entrer le PIN -->
+<div class="modal fade" id="pinModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Entrer votre code PIN</h5>
+            </div>
+            <div class="modal-body">
+                <input type="password" id="pinInput" class="form-control" placeholder="****">
+                <div id="pinError" class="text-danger small mt-2"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="validatePin">Valider</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 

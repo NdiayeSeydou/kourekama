@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Stock;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
+
+
 
 class StocksController extends Controller
 {
@@ -322,4 +327,46 @@ class StocksController extends Controller
 
         return $total;
     }
+
+    // Vérifier le PIN envoyé en AJAX
+    public function checkPin(Request $request)
+    {
+        $request->validate([
+            'pin' => 'required|min:4|max:6',
+        ]);
+
+        $user = Auth::user();
+
+        if (!Hash::check($request->pin, $user->stock_pin)) {
+            return response()->json(['success' => false, 'message' => 'Code PIN incorrect.']);
+        }
+
+        return response()->json(['success' => true]);
+    }
+
+    // Modifier le PIN
+   public function updatePin(Request $request)
+{
+    $request->validate([
+        'current_password' => 'required|min:4|max:6',
+        'new_password' => 'required|min:4|max:6|confirmed'
+    ]);
+
+    $user = Auth::user();
+    $currentPin = trim($request->current_password);
+
+    // Vérifie le PIN actuel
+    if (!Hash::check($currentPin, $user->stock_pin)) {
+        return back()->withErrors([
+            'current_password' => 'Code PIN actuel incorrect.'
+        ]);
+    }
+
+    // Met à jour le PIN
+    $user->stock_pin = Hash::make($request->new_password);
+    $user->save();
+
+    return back()->with('success', 'Code PIN mis à jour avec succès !');
+}
+
 }

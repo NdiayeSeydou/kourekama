@@ -60,6 +60,10 @@ Route::delete('/products/delete/{stock}', [ProductsController::class, 'destroy']
 // fin des ventes 
 
 
+    // pour le pin 
+    Route::post('/check-pin', [StocksController::class, 'checkPin'])->name('check.pin');
+    Route::post('/update-pin', [StocksController::class, 'updatePin'])->name('update.pin');
+
 
 
 //les stocks 
