@@ -10,6 +10,8 @@ use App\Models\Stock;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 
 
@@ -347,23 +349,42 @@ class StocksController extends Controller
     // Modifier le PIN
     public function updatePin(Request $request)
     {
-        $request->validate([
-            'current_password' => 'required|min:4|max:6',
-            'new_password' => 'required|min:4|max:6|confirmed'
+        // Accept either the old field names (current_password/new_password)
+        // or the new PIN-specific names (current_pin/new_pin).
+        $validator = Validator::make($request->all(), [
+            'current_pin' => 'required_without:current_password|min:4|max:6',
+            'current_password' => 'required_without:current_pin|min:4|max:6',
+            'new_pin' => 'required_without:new_password|min:4|max:6|confirmed',
+            'new_password' => 'required_without:new_pin|min:4|max:6|confirmed',
         ]);
 
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
         $user = Auth::user();
-        $currentPin = trim($request->current_password);
+
+        // Determine which inputs were used
+        $currentPin = trim($request->input('current_pin', $request->input('current_password', '')));
+        $newPin = $request->input('new_pin', $request->input('new_password'));
+
+        Log::info('Attempting updatePin', ['user_id' => $user->id, 'has_stock_pin' => (bool) $user->stock_pin]);
+
+        if (empty($user->stock_pin)) {
+            return back()->withErrors([
+                'current_pin' => 'Aucun code PIN défini pour ce compte. Contactez l\'administrateur.'
+            ]);
+        }
 
         // Vérifie le PIN actuel
         if (!Hash::check($currentPin, $user->stock_pin)) {
             return back()->withErrors([
-                'current_password' => 'Code PIN actuel incorrect.'
-            ]);
+                'current_pin' => 'Code PIN actuel incorrect.'
+            ])->withInput();
         }
 
         // Met à jour le PIN
-        $user->stock_pin = Hash::make($request->new_password);
+        $user->stock_pin = Hash::make($newPin);
         $user->save();
 
         return back()->with('success', 'Code PIN mis à jour avec succès !');

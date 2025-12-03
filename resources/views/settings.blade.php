@@ -23,21 +23,19 @@
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link active" id="tab-oneA" data-bs-toggle="tab" href="#oneA"
                                         role="tab" aria-controls="oneA" aria-selected="true"><i
-                                            class="bi bi-person me-2"></i> Informations personnelles
+                                            class="bi bi-person me-2"></i>
+                                        Informations personnelles
                                     </a>
                                 </li>
 
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="tab-fourA" data-bs-toggle="tab" href="#fourA"
-                                        role="tab" aria-controls="fourA" aria-selected="false"><i
-                                            class="bi bi-eye-slash me-2"></i>Modification du mot de passe
+                                    <a class="nav-link" id="tab-fourA" data-bs-toggle="tab" href="#fourA" role="tab"
+                                        aria-controls="fourA" aria-selected="false"><i class="bi bi-eye-slash me-2"></i>Modification du mot de passe
                                     </a>
                                 </li>
-
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="tab-fourB" data-bs-toggle="tab" href="#fourB"
-                                        role="tab" aria-controls="fourB" aria-selected="false"><i
-                                            class="bi bi-eye-slash me-2"></i>Code PIN
+                                    <a class="nav-link" id="tab-fourB" data-bs-toggle="tab" href="#fourB" role="tab"
+                                        aria-controls="fourB" aria-selected="false"><i class="bi bi-eye-slash me-2"></i>Code pin
                                     </a>
                                 </li>
                             </ul>
@@ -142,8 +140,12 @@
                                     </div>
                                 </div>
 
+                                </form>
+
                                 <!-- Code PIN -->
                                 <div class="tab-pane fade" id="fourB" role="tabpanel">
+                                    <form action="{{ route('update.pin') }}" method="POST">
+                                        @csrf
                                     <div class="mb-3">
                                         <label class="form-label" for="current_pin">Code PIN actuel</label>
                                         <input type="password" name="current_pin" class="form-control"
@@ -167,6 +169,10 @@
                                         <input type="password" name="new_pin_confirmation" class="form-control"
                                             placeholder="Confirmer votre nouveau code PIN">
                                     </div>
+                                    <div class="d-flex gap-2 justify-content-end mt-2">
+                                        <button type="submit" class="btn btn-primary">Modifier le code PIN</button>
+                                    </div>
+                                    </form>
                                 </div>
 
                             </div>
